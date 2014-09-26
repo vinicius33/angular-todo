@@ -7,8 +7,17 @@
       <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Task label...">
-          <span class="input-group-addon">
-            <input type="color">
+          <span class="input-group-btn">
+            <button dropdown data-toggle="dropdown" type="button" class="btn btn-default dropdown-toggle">
+              <div class="label label-{{item.color||'primary'}} color-block"></div>
+            </button>
+            <ul class="dropdown-menu dropdown-colors" role="menu">
+              <li><span class="label label-success" ng-click="item.color='success'"></span></li>
+              <li><span class="label label-primary" ng-click="item.color='primary'"></span></li>
+              <li><span class="label label-warning" ng-click="item.color='warning'"></span></li>
+              <li><span class="label label-danger" ng-click="item.color='danger'"></span></li>
+              <li><span class="label label-info" ng-click="item.color='info'"></span></li>
+            </ul>
           </span>
         </div>
       </div>

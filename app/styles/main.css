@@ -77,3 +77,20 @@ body {
     border-bottom: 0;
   }
 }
+
+.color-block {
+  width: 18px;
+  height: 18px;
+  float: left;
+  display: block!important;
+}
+
+.dropdown-colors li {
+  padding: 2px 10px;
+}
+
+.dropdown-colors .label {
+  display: block;
+  padding: 10px;
+  cursor: pointer;
+}
