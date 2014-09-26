@@ -1,22 +1,30 @@
 <div class="clearfix">
-  <form class="form-horizontal" action="">
+  <form name="formAddTask" class="form-horizontal" ng-submit="addTask()" novalidate>
     <div class="form-group">
       <div class="col-lg-7 col-md-7 col-sm-8 col-xs-5">
-        <input type="text" class="form-control" placeholder="Task title...">
+        <input type="text" 
+               name="taskTitle"
+               ng-model="task.title" 
+               class="form-control" 
+               placeholder="Task title...">
       </div>
       <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Task label...">
+          <input type="text" 
+                 name="taskLabelTitle"
+                 ng-model="task.labelTitle" 
+                 class="form-control" 
+                 placeholder="Task label...">
           <span class="input-group-btn">
             <button dropdown data-toggle="dropdown" type="button" class="btn btn-default dropdown-toggle">
-              <div class="label label-{{item.color||'primary'}} color-block"></div>
+              <div class="label label-{{task.labelColor||'primary'}} color-block"></div>
             </button>
             <ul class="dropdown-menu dropdown-colors" role="menu">
-              <li><span class="label label-success" ng-click="item.color='success'"></span></li>
-              <li><span class="label label-primary" ng-click="item.color='primary'"></span></li>
-              <li><span class="label label-warning" ng-click="item.color='warning'"></span></li>
-              <li><span class="label label-danger" ng-click="item.color='danger'"></span></li>
-              <li><span class="label label-info" ng-click="item.color='info'"></span></li>
+              <li><span class="label label-success" ng-click="task.labelColor='success'"></span></li>
+              <li><span class="label label-primary" ng-click="task.labelColor='primary'"></span></li>
+              <li><span class="label label-warning" ng-click="task.labelColor='warning'"></span></li>
+              <li><span class="label label-danger" ng-click="task.labelColor='danger'"></span></li>
+              <li><span class="label label-info" ng-click="task.labelColor='info'"></span></li>
             </ul>
           </span>
         </div>
@@ -29,50 +37,13 @@
 </div>
 
 <ul class="list-group">
-  <li class="list-group-item">
+  <li class="list-group-item" ng-repeat="item in tasks">
     <div class="btn-group pull-right">
       <button class="btn btn-default btn-xs"><i class="glyphicon glyphicon-ok"></i></button>
       <button class="btn btn-default btn-xs"><i class="glyphicon glyphicon-pencil"></i></button>
       <button class="btn btn-default btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
     </div>
-    <span>Cras justo odio</span>
-    <span class="label label-info">Overdue!</span>
+    <span>{{item.title}}</span>
+    <span class="label label-{{item.labelColor}}">{{item.labelTitle}}</span>
   </li>
-  <li class="list-group-item">
-    <div class="btn-group pull-right">
-      <button class="btn btn-default btn-xs"><i class="glyphicon glyphicon-ok"></i></button>
-      <button class="btn btn-default btn-xs"><i class="glyphicon glyphicon-pencil"></i></button>
-      <button class="btn btn-default btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
-    </div>
-    <span>Cras justo odio</span>
-    <span class="label label-success">Overdue!</span>
-  </li>
-  <li class="list-group-item">
-    <div class="btn-group pull-right">
-      <button class="btn btn-default btn-xs"><i class="glyphicon glyphicon-ok"></i></button>
-      <button class="btn btn-default btn-xs"><i class="glyphicon glyphicon-pencil"></i></button>
-      <button class="btn btn-default btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
-    </div>
-    <span>Cras justo odio</span>
-    <span class="label label-warning">Overdue!</span>
-  </li>
-  <li class="list-group-item">
-    <div class="btn-group pull-right">
-      <button class="btn btn-default btn-xs"><i class="glyphicon glyphicon-ok"></i></button>
-      <button class="btn btn-default btn-xs"><i class="glyphicon glyphicon-pencil"></i></button>
-      <button class="btn btn-default btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
-    </div>
-    <span>Cras justo odio</span>
-    <span class="label label-danger">Overdue!</span>
-  </li>
-  <li class="list-group-item">
-    <div class="btn-group pull-right">
-      <button class="btn btn-default btn-xs"><i class="glyphicon glyphicon-ok"></i></button>
-      <button class="btn btn-default btn-xs"><i class="glyphicon glyphicon-pencil"></i></button>
-      <button class="btn btn-default btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
-    </div>
-    <span>Cras justo odio</span>
-    <span class="label label-default">Overdue!</span>
-  </li>
-
 </ul>

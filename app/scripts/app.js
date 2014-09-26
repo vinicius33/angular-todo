@@ -9,4 +9,4 @@
  * Main module of the application.
  */
 angular
-  .module('hackApp', ['hackApp.directives']);
+  .module('hackApp', ['hackApp.controllers', 'hackApp.directives']);
