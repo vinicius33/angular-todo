@@ -1,13 +1,7 @@
 'use strict';
 
-/**
-* hackApp.directives Module
-*
-* Description
-*/
-
 angular
-  .module('hackApp.directives', [])
+  .module('todoApp.directives', [])
   .directive('dropdown', [function(){
     return {
       restrict: 'A',

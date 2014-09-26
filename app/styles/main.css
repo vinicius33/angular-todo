@@ -94,3 +94,8 @@ body {
   padding: 10px;
   cursor: pointer;
 }
+
+.block {
+  display: block;
+  margin-bottom: 15px;
+}

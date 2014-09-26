@@ -1,48 +1,59 @@
 'use strict';
 
-/**
-* hackApp.directives Module
-*
-* Description
-*/
-
 angular
-  .module('hackApp.controllers', [])
-  .controller('MainController', ['$scope', function($scope){
-    
+  .module('todoApp.controllers', [])
+  .controller('TasksCtrl', ['$scope', '$routeParams'
+    , function($scope, $routeParams){
+
+    $scope.filterAll = true;
+    $scope.showAddTask = false;
+
     $scope.tasks = [
       {
         title: 'Take shower',
         labelTitle: 'Wow!',
         labelColor: 'warning',
-        status: 0
+        completed: false
       },
       {
         title: 'Lorem Ipsum',
         labelTitle: 'Wow!',
         labelColor: 'default',
-        status: 0
+        completed: false
       },
       {
         title: 'Dolor Sit',
         labelTitle: 'Wow!',
         labelColor: 'success',
-        status: 0
+        completed: false
       },
       {
         title: 'Consectetur',
         labelTitle: 'Wow!',
         labelColor: 'info',
-        status: 0
+        completed: false
       }
     ];
-    
+
     $scope.task = {};
+
+    $scope.$on('$routeChangeSuccess', function () {
+      var status = $scope.status = $routeParams.status || '';
+
+      $scope.statusFilter = (status === 'active') ?
+        { completed: false } : (status === 'completed') ?
+        { completed: true } : null;
+    });
 
     $scope.addTask = function () {
 
       $scope.tasks.push($scope.task);
+      $scope.task = {};
 
+    };
+
+    $scope.removeTask = function (item) {
+      $scope.tasks.splice($scope.tasks.indexOf(item), 1);
     };
 
   }]);
