@@ -1,3 +1,49 @@
-<div class="container">
-  <nav-pills></nav-pills>
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#example" role="tab" data-toggle="tab">Example</a></li>
+  <li><a href="#html" role="tab" data-toggle="tab">Html</a></li>
+  <li><a href="#javascript" role="tab" data-toggle="tab">Javascript</a></li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane active" id="example">
+    <main ng-controller="ExamplesCtrl">
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="myTitle">
+      </div>
+      <div class="form-actions">
+        <a ng-click="alertUser()" class="btn btn-primary btn-block">Click Me!</a>
+      </div>
+    </main>
+  </div>
+  <div class="tab-pane" id="html">
+    <pre class="prettyprint">
+      <xmp>
+        <main ng-controller="ExamplesCtrl">
+          <div class="form-group">
+            <input type="text" class="form-control" ng-model="myTitle">
+          </div>
+          <div class="form-actions">
+            <a ng-click="alertUser()" class="btn btn-primary btn-block">Click Me!</a>
+          </div>
+        </main>
+      </xmp>
+    </pre>
+  </div>
+  <div class="tab-pane" id="javascript">
+    <pre class="prettyprint lang-js">
+      var app = angular.module('app.controllers', []);
+
+      app
+        .controller('ExamplesCtrl', ['$scope', '$rootScope', 'TasksFactory'
+          , function($scope, $rootScope, TasksFactory){
+
+          $rootScope.myTitle = 'Title outside';
+          $scope.myTitle = 'Awesome Title.... put your title here!';
+
+          $scope.alertUser = function () {
+            alert('Hey! ' + $scope.myTitle);
+          };
+
+        }]);
+    </pre>
+  </div>
 </div>

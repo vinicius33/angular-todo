@@ -1,0 +1,85 @@
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#example" role="tab" data-toggle="tab">Example</a></li>
+  <li><a href="#html" role="tab" data-toggle="tab">Html</a></li>
+  <li><a href="#controller" role="tab" data-toggle="tab">Controller</a></li>
+  <li><a href="#service" role="tab" data-toggle="tab">Service</a></li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane active" id="example">
+    <main ng-controller="ExamplesCtrl">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search..." ng-model="search">
+      </div>
+      <ul>
+        <li ng-repeat="task in tasks | filter:search">
+          {{task.title}}
+        </li>
+      </ul>
+    </main>
+  </div>
+  <div class="tab-pane" id="html">
+    <pre class="prettyprint lang-html">
+      <xmp>
+        <main ng-controller="ExamplesCtrl">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search..." ng-model="search">
+          </div>
+          <ul>
+            <li ng-repeat="task in tasks | filter:search">
+              {{task.title}}
+            </li>
+          </ul>
+        </main>
+      </xmp>
+    </pre>
+  </div>
+  <div class="tab-pane" id="controller">
+    <pre class="prettyprint lang-js">
+
+      angular
+        .module('app.controllers', [])
+        .controller('ExamplesCtrl', ['$scope', '$rootScope', 'TasksFactory'
+        , function($scope, $rootScope, TasksFactory){
+
+          TasksFactory.getTasks()
+            .then(function () {
+              $scope.tasks = TasksFactory.tasks;
+            });
+
+        }]);
+
+    </pre>
+  </div>
+  <div class="tab-pane" id="service">
+    <pre class="prettyprint lang-js">
+      angular
+        .module('app.services', [])
+        .factory('TasksFactory', ['$http', '$q', function($http, $q){
+
+          var exports = {};
+
+          exports.tasks = [];
+
+          exports.getTasks = function () {
+
+            var deferred = $q.defer();
+
+            $http.get('scripts/tasks-demo.json')
+              .success(function (data) {
+                exports.tasks = data;
+                deferred.resolve(data);
+              })
+              .error(function (data){
+                deferred.reject(data);
+              });
+
+            return deferred.promise;
+
+          };
+
+          return exports;
+
+        }]);
+    </pre>
+  </div>
+</div>

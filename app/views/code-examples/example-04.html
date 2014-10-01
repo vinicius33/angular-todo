@@ -1,10 +1,35 @@
-<main ng-controller="ExamplesCtrl">
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="Search..." ng-model="search">
+<ul class="nav nav-tabs" role="tablist">
+  <li><a href="#script" role="tab" data-toggle="tab">Script</a></li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane active" id="controller">
+    <pre class="prettyprint lang-js">
+
+      angular
+        .module('myApp.controllers', [])
+        .controller('MyController', ['$scope', function($scope){
+        }]);
+
+      angular
+        .module('myApp.services', [])
+        .factory('MyFactory', [function () {
+        }]);
+
+      angular
+        .module('myApp.filters', [])
+        .filter(function(index) {
+          return something;
+        });
+
+      angular
+        .module('myApp.directives', [])
+        .directive('myDirective', [function(){
+        }]);
+
+      angular.module('myApp', ['myApp.controllers', 'myApp.services', 'myApp.filters', 'myApp.directives']);
+
+      angular.bootstrap(document, ['myApp'])
+
+    </pre>
   </div>
-  <ul>
-    <li ng-repeat="task in tasks | filter:search">
-      {{task.title}}
-    </li>
-  </ul>
-</main>
+</div>

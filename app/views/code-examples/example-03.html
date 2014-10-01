@@ -1,8 +1,101 @@
-<main ng-controller="ExamplesCtrl">
-  <div class="form-group">
-    <input type="text" class="form-control" ng-model="myTitle">
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#example" role="tab" data-toggle="tab">Example</a></li>
+  <li><a href="#html" role="tab" data-toggle="tab">Html</a></li>
+  <li><a href="#controller" role="tab" data-toggle="tab">Controller</a></li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane active" id="example">
+    <main ng-controller="ExamplesCtrl">
+
+      <div class="form-group">
+        <label>ngShow</label>
+        <input type="checkbox" ng-model="showAlert">
+      </div>
+      <div class="alert alert-success" ng-show="showAlert">
+        Alert when showAlert is TRUE!
+      </div>
+
+      <div class="form-group">
+        <label>ngIf</label>
+        <input type="checkbox" ng-model="showIf">
+      </div>
+      <div class="alert alert-info" ng-if="showIf">
+        Alert when showIf is TRUE!
+      </div>
+
+      <div class="form-group">
+        <label>ngClick</label>
+        <a class="btn btn-default" ng-click="alertUser()">ng-click-button</a>
+      </div>
+
+      <div class="form-group">
+        <label>ngKeydown</label>
+        <input type="text" class="form-control" ng-model="keydownText" ng-keydown="keydownUser($event)">
+      </div>
+      <div class="alert alert-default" ng-show="keydownText">
+        debug keydown: {{keydownDebug.keyCode}}
+      </div>
+
+    </main>
   </div>
-  <div class="form-actions">
-    <a ng-click="alertUser()" class="btn btn-primary btn-block">Click Me!</a>
+  <div class="tab-pane" id="html">
+    <pre class="prettyprint lang-html">
+      <xmp>
+        <main ng-controller="ExamplesCtrl">
+
+          <div class="form-group">
+            <label>ngShow</label>
+            <input type="checkbox" ng-model="showAlert">
+          </div>
+          <div class="alert alert-success" ng-show="showAlert">
+            Alert when showAlert is TRUE!
+          </div>
+
+          <div class="form-group">
+            <label>ngIf</label>
+            <input type="checkbox" ng-model="showIf">
+          </div>
+          <div class="alert alert-info" ng-if="showIf">
+            Alert when showIf is TRUE!
+          </div>
+
+          <div class="form-group">
+            <label>ngClick</label>
+            <a class="btn btn-default" ng-click="alertUser()">ng-click-button</a>
+          </div>
+
+          <div class="form-group">
+            <label>ngKeydown</label>
+            <input type="text" class="form-control" ng-model="keydownText" ng-keydown="keydownUser($event)">
+          </div>
+          <div class="alert alert-default" ng-show="keydownText">
+            debug keydown: {{keydownDebug.keyCode}}
+          </div>
+
+        </main>
+      </xmp>
+    </pre>
   </div>
-</main>
+  <div class="tab-pane" id="controller">
+    <pre class="prettyprint lang-js">
+
+      angular
+        .module('app.controllers', [])
+        .controller('ExamplesCtrl', ['$scope', function($scope){
+
+          $scope.myTitle = 'Awesome Title.... put your title here!';
+
+          $scope.alertUser = function () {
+            alert('Hey! ' + $scope.myTitle);
+          };
+
+          $scope.keydownUser = function ($event) {
+
+            $scope.keydownDebug = $event;
+          };
+
+        }]);
+
+    </pre>
+  </div>
+</div>

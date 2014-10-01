@@ -1,0 +1,52 @@
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#example" role="tab" data-toggle="tab">Example</a></li>
+  <li><a href="#html" role="tab" data-toggle="tab">Html</a></li>
+  <li><a href="#directive" role="tab" data-toggle="tab">Directive</a></li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane active" id="example">
+    <div class="container">
+      <nav-pills></nav-pills>
+    </div>
+  </div>
+  <div class="tab-pane" id="html">
+    <pre class="prettyprint lang-html">
+      <xmp>
+        <div class="container">
+          <nav-pills></nav-pills>
+        </div>
+      </xmp>
+    </pre>
+  </div>
+  <div class="tab-pane" id="directive">
+    <pre class="prettyprint lang-js">
+
+      angular
+        .module('app.directives', [])
+        .directive('navPills', ['$location', function($location){
+          return {
+            restrict: 'E',
+            templateUrl: 'views/includes/navpills.html',
+            link: function($scope, iElm, iAttrs, controller) {
+
+              var route = $location.$$url;
+
+              iElm
+                .find('a[ng-href="#'+route+'"]')
+                .parent()
+                .addClass('active');
+
+              iElm
+                .find('a')
+                .on('click', function (e) {
+                  iElm.find('li').removeClass('active');
+                  $(e.target).parent().addClass('active');
+                });
+
+            }
+          };
+        }]);
+
+    </pre>
+  </div>
+</div>

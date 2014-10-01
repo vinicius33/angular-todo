@@ -1,10 +1,35 @@
-  
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#example" role="tab" data-toggle="tab">Example</a></li>
+  <li><a href="#html" role="tab" data-toggle="tab">Html</a></li>
+  <li><a href="#javascript" role="tab" data-toggle="tab">Javascript</a></li>
+</ul>
 
-<!-- Yours first model in Angular.js :) -->
-<div class="form-group">
-  <input type="text" class="form-control" ng-model="myName" placeholder="Tell me your name...">
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="example">
+    <!-- Yours first model in Angular.js :) -->
+    <div class="form-group">
+      <input type="text" class="form-control" ng-model="myName" placeholder="Tell me your name...">
+    </div>
+    <!-- The powerful of Two Way data binding -->
+    <h1>Hello, <strong>{{myName}}</strong></h1>
+  </div>
+  <div class="tab-pane" id="html">
+    <pre class="prettyprint">
+      <xmp>
+        <div class="form-group">
+          <input type="text" class="form-control" ng-model="myName" placeholder="Tell me your name...">
+        </div>
+
+        <h1>Hello, <strong>\{{myName}\}</strong></h1>
+      </xmp>
+    </pre>
+  </div>
+  <div class="tab-pane" id="javascript">
+    <pre class="prettyprint">
+      //nothing... :)
+    </pre>
+  </div>
 </div>
 
-
-<!-- The powerful of Two Way data binding -->
-<h1>Hello, <strong>{{myName}}</strong></h1>

@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/bootswatch/lumen/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/google-code-prettify/bin/prettify.min.css" />
     <link rel="stylesheet" href="styles/main.css">
   </head>
-  <body>
+  <body onload="prettyPrint()">
 
     <main class="container" ng-controller="TasksCtrl">
 
@@ -27,6 +28,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/google-code-prettify/bin/prettify.min.js"></script>
 
     <!-- app -->
     <script src="scripts/services.js"></script>

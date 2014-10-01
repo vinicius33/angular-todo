@@ -55,12 +55,14 @@ angular
 
       $scope.tasks[$scope.tasks.indexOf(item)] = $scope.originalTask;
       item.editing = false;
-      
+
     };
 
   }])
-  .controller('ExamplesCtrl', ['$scope', 'TasksFactory', function($scope, TasksFactory){
-    
+  .controller('ExamplesCtrl', ['$scope', '$rootScope', 'TasksFactory'
+    , function($scope, $rootScope, TasksFactory){
+
+    $rootScope.myTitle = 'Title outside';
     $scope.myTitle = 'Awesome Title.... put your title here!';
 
     TasksFactory.getTasks()
@@ -70,6 +72,11 @@ angular
 
     $scope.alertUser = function () {
       alert('Hey! ' + $scope.myTitle);
+    };
+
+    $scope.keydownUser = function ($event) {
+
+      $scope.keydownDebug = $event;
     };
 
   }]);
