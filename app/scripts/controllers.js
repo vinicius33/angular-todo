@@ -1,39 +1,17 @@
 'use strict';
 
 angular
-  .module('todoApp.controllers', [])
-  .controller('TasksCtrl', ['$scope', '$routeParams'
-    , function($scope, $routeParams){
+  .module('app.controllers', [])
+  .controller('TasksCtrl', ['$scope', '$routeParams', 'TasksFactory'
+    , function($scope, $routeParams, TasksFactory){
 
     $scope.filterAll = true;
     $scope.showAddTask = false;
 
-    $scope.tasks = [
-      {
-        title: 'Take shower',
-        labelTitle: 'Wow!',
-        labelColor: 'warning',
-        completed: false
-      },
-      {
-        title: 'Lorem Ipsum',
-        labelTitle: 'Wow!',
-        labelColor: 'default',
-        completed: false
-      },
-      {
-        title: 'Dolor Sit',
-        labelTitle: 'Wow!',
-        labelColor: 'success',
-        completed: false
-      },
-      {
-        title: 'Consectetur',
-        labelTitle: 'Wow!',
-        labelColor: 'info',
-        completed: false
-      }
-    ];
+    TasksFactory.getTasks()
+      .then(function () {
+        $scope.tasks = TasksFactory.tasks;
+      });
 
     $scope.task = {};
 
@@ -53,7 +31,45 @@ angular
     };
 
     $scope.removeTask = function (item) {
+
       $scope.tasks.splice($scope.tasks.indexOf(item), 1);
+
+    };
+
+    $scope.editTask = function (item) {
+
+      item.editing = true;
+      $scope.originalTask = angular.extend({}, item);
+
+    };
+
+    $scope.doneEditingTask = function (item) {
+
+      item.editing = false;
+
+    };
+
+    $scope.cancelEdit = function ($event, item) {
+
+      if ($event.keyCode !== 27) return;
+
+      $scope.tasks[$scope.tasks.indexOf(item)] = $scope.originalTask;
+      item.editing = false;
+      
+    };
+
+  }])
+  .controller('ExamplesCtrl', ['$scope', 'TasksFactory', function($scope, TasksFactory){
+    
+    $scope.myTitle = 'Awesome Title.... put your title here!';
+
+    TasksFactory.getTasks()
+      .then(function () {
+        $scope.tasks = TasksFactory.tasks;
+      });
+
+    $scope.alertUser = function () {
+      alert('Hey! ' + $scope.myTitle);
     };
 
   }]);

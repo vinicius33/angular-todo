@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('todoApp', ['ngRoute', 'todoApp.controllers', 'todoApp.directives'])
+  .module('app', ['ngRoute', 'app.services', 'app.controllers', 'app.directives'])
   .config(['$provide', '$routeProvider'
     , function ($provide, $routeProvider) {
 
@@ -10,16 +10,19 @@ angular
         redirectTo: '/tasks'
       })
       .when('/tasks', {
-        templateUrl: 'views/tasks.html',
-        controller: 'TasksCtrl'
+        templateUrl: 'views/tasks.html'
       })
       .when('/tasks/:status', {
-        templateUrl: 'views/tasks.html',
-        controller: 'TasksCtrl'
+        templateUrl: 'views/tasks.html'
       })
-      .when('/other', {
-        templateUrl: 'views/other.html',
-        controller: 'OtherCtrl'
+      .when('/examples', {
+        templateUrl: 'views/examples.html',
+        controller: 'ExamplesCtrl'
+      })
+      .when('/examples/:id', {
+        templateUrl: function (params) {
+          return 'views/code-examples/example-' + params.id + '.html';
+        }
       })
       .when('/interesting', {
         templateUrl: 'views/interesting.html',
@@ -28,4 +31,4 @@ angular
 
   }]);
 
-angular.bootstrap(document, ['todoApp']);
+angular.bootstrap(document, ['app']);

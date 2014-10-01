@@ -1,0 +1,24 @@
+[{
+  "title": "Take shower",
+  "labelTitle": "Wow!",
+  "labelColor": "warning",
+  "completed": false
+},
+{
+  "title": "Lorem Ipsum",
+  "labelTitle": "Wow!",
+  "labelColor": "default",
+  "completed": false
+},
+{
+  "title": "Dolor Sit",
+  "labelTitle": "Wow!",
+  "labelColor": "success",
+  "completed": false
+},
+{
+  "title": "Consectetur",
+  "labelTitle": "Wow!",
+  "labelColor": "info",
+  "completed": false
+}]

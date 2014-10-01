@@ -1,0 +1,10 @@
+<main ng-controller="ExamplesCtrl">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search..." ng-model="search">
+  </div>
+  <ul>
+    <li ng-repeat="task in tasks | filter:search">
+      {{task.title}}
+    </li>
+  </ul>
+</main>
